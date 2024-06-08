@@ -42,7 +42,7 @@ export default function NavigationBar() {
                 width={0}
                 height={0}
               />
-              <span className="hidden md:bock text-white text-2xl font-bold ml-2">
+              <span className="hidden md:block text-white text-2xl font-bold ml-2">
                 PropertyPulse
               </span>
             </Link>
