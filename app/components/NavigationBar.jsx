@@ -37,7 +37,7 @@ export default function NavigationBar() {
             <Link className="flex flex-shrink-0 items-center" href="/">
               <Image
                 className="h-10 w-auto"
-                src="/images/logo.png"
+                src="/images/logo-white.png"
                 alt="logo"
                 width={0}
                 height={0}
