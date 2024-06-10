@@ -53,7 +53,7 @@ export default function NavigationBar() {
                 className="h-10 w-auto"
                 src="/images/logo-white.png"
                 alt="logo"
-                width={0}
+                width={50}
                 height={0}
               />
               <span className="hidden md:block text-white text-2xl font-bold ml-2">
@@ -151,8 +151,8 @@ export default function NavigationBar() {
                       className="h-8 w-8 rounded-full"
                       src="/images/profile.png"
                       alt="profile"
-                      width={0}
-                      height={0}
+                      width={30}
+                      height={30}
                     />
                   </button>
                 </div>
