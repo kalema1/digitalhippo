@@ -1,6 +1,10 @@
-import Image from "next/image";
+import Hero from "@/components/hero/Hero";
 
 export default function Home() {
   console.log("server side");
-  return <div>Hello World</div>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
