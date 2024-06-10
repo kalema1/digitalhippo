@@ -11,6 +11,7 @@ export default function NavigationBar() {
     toggleMobileMenu,
     toggleProfileMenu,
     isProfileMenuOpen,
+    pathname,
   } = useNavigationBar();
 
   return (
@@ -63,19 +64,25 @@ export default function NavigationBar() {
             <div className="hidden md:block md:ml-6">
               <div className="flex space-x-2">
                 <Link
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                   href="/"
+                  className={`${
+                    pathname === "/" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                 >
                   Home
                 </Link>
                 <Link
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className={`${
+                    pathname === "/properties" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                   href="/properties"
                 >
                   Properties
                 </Link>
                 <Link
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className={`${
+                    pathname === "/properties/add" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                   href="/properties/add"
                 >
                   Add Property
@@ -191,19 +198,25 @@ export default function NavigationBar() {
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
               href="/"
-              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+              className={`${
+                pathname === "/" ? "bg-black" : ""
+              } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
             >
               Home
             </Link>
             <Link
               href="/properties"
-              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+              className={`${
+                pathname === "/properties" ? "bg-black" : ""
+              } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
             >
               Properties
             </Link>
             <Link
               href="/properties/add"
-              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+              className={`${
+                pathname === "/properties/add" ? "bg-black" : ""
+              } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
             >
               Add Property
             </Link>

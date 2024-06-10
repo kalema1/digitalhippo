@@ -1,8 +1,11 @@
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function useNavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+  const pathname = usePathname();
 
   /*
    * toggles mobile menu
@@ -23,5 +26,6 @@ export default function useNavigationBar() {
     toggleMobileMenu,
     isProfileMenuOpen,
     toggleProfileMenu,
+    pathname,
   };
 }
