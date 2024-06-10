@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { FaGoogle } from "react-icons/fa";
 
 export default function NavigationBar() {
   return (
@@ -58,13 +61,13 @@ export default function NavigationBar() {
                 </Link>
                 <Link
                   className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  href="/"
+                  href="/properties"
                 >
                   Properties
                 </Link>
                 <Link
                   className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  href="/"
+                  href="/properties/add"
                 >
                   Add Property
                 </Link>
@@ -75,13 +78,16 @@ export default function NavigationBar() {
           <div className="hidden md:block md:ml-6">
             <div className="flex items-center">
               <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md  px-3 py-2">
+                <span className="fa-brands fa-google mr-2">
+                  <FaGoogle />
+                </span>
                 <span>Login or Register</span>
               </button>
             </div>
           </div>
           {/* logged in */}
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-            <Link className="relative group" href="/">
+            <Link className="relative group" href="/messages">
               <button className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus-ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span className="absolute -inset-1.5"></span>
                 <span className="sr-only">View notifications</span>
@@ -136,7 +142,7 @@ export default function NavigationBar() {
                 aria-labelledby="user-menu-button"
               >
                 <Link
-                  href="/"
+                  href="/profile"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
@@ -145,7 +151,7 @@ export default function NavigationBar() {
                   your Profile
                 </Link>
                 <Link
-                  href="/"
+                  href="/properties/saved"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
@@ -153,15 +159,14 @@ export default function NavigationBar() {
                 >
                   Saved properties
                 </Link>
-                <Link
-                  href="/"
+                <button
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
                   id="user-menu-item-2"
                 >
                   Sign Out
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -169,7 +174,7 @@ export default function NavigationBar() {
       </div>
 
       {/* mobile menu */}
-      <div className="hidden" id="mobile-menu">
+      <div className="" id="mobile-menu">
         <div className="space-y-1 px-2 pb-3 pt-2">
           <Link
             href="/"
@@ -178,13 +183,21 @@ export default function NavigationBar() {
             Home
           </Link>
           <Link
-            href="/"
+            href="/properties"
+            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+          >
+            Properties
+          </Link>
+          <Link
+            href="/properties/add"
             className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
           >
             Add Property
           </Link>
           <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
-            <span className="fa-brands fa-google mr-2"></span>
+            <span className="fa-brands fa-google mr-2">
+              <FaGoogle />
+            </span>
             <span>Login or Register</span>
           </button>
         </div>
