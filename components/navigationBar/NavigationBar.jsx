@@ -3,8 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
+import useNavigationBar from "./usenavigationBar";
 
 export default function NavigationBar() {
+  const {
+    isMobileMenuOpen,
+    toggleMobileMenu,
+    toggleProfileMenu,
+    isProfileMenuOpen,
+  } = useNavigationBar();
+
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -17,9 +25,10 @@ export default function NavigationBar() {
               className="relative inline-flex items-center justify-center rounded-md text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
+              onClick={toggleMobileMenu}
             >
               <span className="absolute -inset-0.5"></span>
-              <span className="sr-only"></span>
+              <span className="sr-only">open main menu</span>
               <svg
                 className="block h-6 w-6"
                 fill="none"
@@ -111,8 +120,8 @@ export default function NavigationBar() {
               </span>
             </Link>
 
-            {/* drop down button */}
             <div className="relative ml-3">
+              {/* drop down button */}
               <div>
                 <button
                   type="button"
@@ -120,6 +129,7 @@ export default function NavigationBar() {
                   id="user-menu-button"
                   aria-expanded="false"
                   aria-haspopup="true"
+                  onClick={toggleProfileMenu}
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">Open user menu</span>
@@ -134,74 +144,78 @@ export default function NavigationBar() {
               </div>
 
               {/* profile drop down */}
-              <div
-                id="user-menu"
-                className="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-              >
-                <Link
-                  href="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-0"
+              {isProfileMenuOpen && (
+                <div
+                  id="user-menu"
+                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
                 >
-                  your Profile
-                </Link>
-                <Link
-                  href="/properties/saved"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-1"
-                >
-                  Saved properties
-                </Link>
-                <button
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-2"
-                >
-                  Sign Out
-                </button>
-              </div>
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex="-1"
+                    id="user-menu-item-0"
+                  >
+                    your Profile
+                  </Link>
+                  <Link
+                    href="/properties/saved"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex="-1"
+                    id="user-menu-item-1"
+                  >
+                    Saved properties
+                  </Link>
+                  <button
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex="-1"
+                    id="user-menu-item-2"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
       {/* mobile menu */}
-      <div className="" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <Link
-            href="/"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Home
-          </Link>
-          <Link
-            href="/properties"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Properties
-          </Link>
-          <Link
-            href="/properties/add"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Add Property
-          </Link>
-          <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
-            <span className="fa-brands fa-google mr-2">
-              <FaGoogle />
-            </span>
-            <span>Login or Register</span>
-          </button>
+      {isMobileMenuOpen && (
+        <div className="" id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            <Link
+              href="/"
+              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Home
+            </Link>
+            <Link
+              href="/properties"
+              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Properties
+            </Link>
+            <Link
+              href="/properties/add"
+              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Add Property
+            </Link>
+            <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
+              <span className="fa-brands fa-google mr-2">
+                <FaGoogle />
+              </span>
+              <span>Login or Register</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
