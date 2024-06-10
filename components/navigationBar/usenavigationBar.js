@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function useNavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const pathname = usePathname();
 
@@ -27,5 +28,6 @@ export default function useNavigationBar() {
     isProfileMenuOpen,
     toggleProfileMenu,
     pathname,
+    isLoggedIn,
   };
 }

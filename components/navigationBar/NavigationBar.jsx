@@ -12,6 +12,7 @@ export default function NavigationBar() {
     toggleProfileMenu,
     isProfileMenuOpen,
     pathname,
+    isLoggedIn,
   } = useNavigationBar();
 
   return (
@@ -79,14 +80,16 @@ export default function NavigationBar() {
                 >
                   Properties
                 </Link>
-                <Link
-                  className={`${
-                    pathname === "/properties/add" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-                  href="/properties/add"
-                >
-                  Add Property
-                </Link>
+                {isLoggedIn && (
+                  <Link
+                    className={`${
+                      pathname === "/properties/add" ? "bg-black" : ""
+                    } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    href="/properties/add"
+                  >
+                    Add Property
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -212,14 +215,16 @@ export default function NavigationBar() {
             >
               Properties
             </Link>
-            <Link
-              href="/properties/add"
-              className={`${
-                pathname === "/properties/add" ? "bg-black" : ""
-              } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
-            >
-              Add Property
-            </Link>
+            {isLoggedIn && (
+              <Link
+                href="/properties/add"
+                className={`${
+                  pathname === "/properties/add" ? "bg-black" : ""
+                } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
+              >
+                Add Property
+              </Link>
+            )}
             <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
               <span className="fa-brands fa-google mr-2">
                 <FaGoogle />
