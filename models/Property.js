@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mangoose";
+import { Schema, model, models } from "mongoose";
 
 const PropertySchema = new Schema(
   {
@@ -57,5 +57,6 @@ const PropertySchema = new Schema(
   { timestamps: true }
 );
 
+// Property model
 const Property = models.Property || model("Property", PropertySchema);
 export default Property;

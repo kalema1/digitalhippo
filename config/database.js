@@ -4,12 +4,12 @@ import mongoose from "mongoose";
 
 let isConnected = false;
 
-export default async function conncetDB() {
+export default async function connectDB() {
   mongoose.set("strictQuery", true);
 
   // if connected to the database, dont connect again
   if (isConnected) {
-    console.log("MongoDB is already ConnectionClosedEvent....");
+    console.log("MongoDB is already Connected...");
     return;
   }
 
