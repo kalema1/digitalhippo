@@ -1,8 +1,8 @@
 import PropertyCard from "@/components/propertyCard/PropertyCard";
-import { fetchProprties } from "@/services/apiProperties";
+import { fetchProperties } from "@/services/apiProperties";
 
 export default async function Properties() {
-  const properties = await fetchProprties();
+  const properties = await fetchProperties();
 
   return (
     <section className="px-4 py-6">

@@ -1,10 +1,12 @@
 import Link from "next/link";
-import properties from "@/properties.json";
+import { fetchProperties } from "@/services/apiProperties";
 import PropertyCard from "../propertyCard/PropertyCard";
 
-export default function HomeProperties() {
+export default async function HomeProperties() {
+  const properties = await fetchProperties();
+
   // randomizing and geting 3 items from properties
-  const recentroperties = properties
+  const recentProperties = properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
 
@@ -16,8 +18,8 @@ export default function HomeProperties() {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentroperties.length === 0 && <div>No Property Found</div>}
-            {recentroperties.map((property) => (
+            {recentProperties.length === 0 && <div>No Property Found</div>}
+            {recentProperties.map((property) => (
               <PropertyCard property={property} key={property._id} />
             ))}
           </div>
