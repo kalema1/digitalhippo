@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { fetchProperty } from "@/services/apiProperties";
 import PropertyImageHeader from "@/components/propertyImageHeader/PropertyImageHeader";
 import Loader from "@/ui/Loader";
+import BackButton from "@/ui/BackButton";
 
 export default function PropertyDetails() {
   const { propertyId } = useParams();
@@ -48,6 +49,7 @@ export default function PropertyDetails() {
       {!isLoading && property && (
         <>
           <PropertyImageHeader image={property.images[0]} />
+          <BackButton />
         </>
       )}
     </>
