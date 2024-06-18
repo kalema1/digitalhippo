@@ -46,7 +46,7 @@ export default function PropertyDetails() {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <Loader loading={isLoading} />}
       {!isLoading && property && (
         <>
           <PropertyImageHeader image={property.images[0]} />
