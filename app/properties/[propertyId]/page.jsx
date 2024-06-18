@@ -6,6 +6,7 @@ import { fetchProperty } from "@/services/apiProperties";
 import PropertyImageHeader from "@/components/propertyImageHeader/PropertyImageHeader";
 import Loader from "@/ui/Loader";
 import BackButton from "@/ui/BackButton";
+import PropertyInfo from "@/components/property/PropertyInfo";
 
 export default function PropertyDetails() {
   const { propertyId } = useParams();
@@ -50,6 +51,7 @@ export default function PropertyDetails() {
         <>
           <PropertyImageHeader image={property.images[0]} />
           <BackButton />
+          <PropertyInfo />
         </>
       )}
     </>
