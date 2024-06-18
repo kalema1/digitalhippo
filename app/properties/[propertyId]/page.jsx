@@ -51,7 +51,7 @@ export default function PropertyDetails() {
         <>
           <PropertyImageHeader image={property.images[0]} />
           <BackButton />
-          <PropertyInfo />
+          <PropertyInfo property={property} />
         </>
       )}
     </>
