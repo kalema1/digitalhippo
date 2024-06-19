@@ -12,7 +12,9 @@ export default function NavigationBar() {
     toggleProfileMenu,
     isProfileMenuOpen,
     pathname,
-    isLoggedIn,
+    session,
+    providers,
+    signIn,
   } = useNavigationBar();
 
   return (
@@ -80,7 +82,7 @@ export default function NavigationBar() {
                 >
                   Properties
                 </Link>
-                {isLoggedIn && (
+                {session && (
                   <Link
                     className={`${
                       pathname === "/properties/add" ? "bg-black" : ""
@@ -94,21 +96,28 @@ export default function NavigationBar() {
             </div>
           </div>
           {/* right side menu logout*/}
-          {!isLoggedIn && (
+          {!session && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
-                <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md  px-3 py-2">
-                  <span className="fa-brands fa-google mr-2">
-                    <FaGoogle />
-                  </span>
-                  <span>Login or Register</span>
-                </button>
+                {providers &&
+                  Object.values(providers).map((provider, index) => (
+                    <button
+                      key={index}
+                      onClick={() => signIn(provider.id)}
+                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md  px-3 py-2"
+                    >
+                      <span className="fa-brands fa-google mr-2">
+                        <FaGoogle />
+                      </span>
+                      <span>Login or Register</span>
+                    </button>
+                  ))}
               </div>
             </div>
           )}
 
           {/* logged in */}
-          {isLoggedIn && (
+          {session && (
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
               <Link className="relative group" href="/messages">
                 <button className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus-ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -220,7 +229,7 @@ export default function NavigationBar() {
             >
               Properties
             </Link>
-            {isLoggedIn && (
+            {session && (
               <Link
                 href="/properties/add"
                 className={`${
@@ -231,14 +240,20 @@ export default function NavigationBar() {
               </Link>
             )}
 
-            {!isLoggedIn && (
-              <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
-                <span className="fa-brands fa-google mr-2">
-                  <FaGoogle />
-                </span>
-                <span>Login or Register</span>
-              </button>
-            )}
+            {!session &&
+              providers &&
+              Object.values(providers).map((provider, index) => (
+                <button
+                  key={index}
+                  onClick={() => signIn(provider.id)}
+                  className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+                >
+                  <span className="fa-brands fa-google mr-2">
+                    <FaGoogle />
+                  </span>
+                  <span>Login or Register</span>
+                </button>
+              ))}
           </div>
         </div>
       )}

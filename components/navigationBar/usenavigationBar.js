@@ -1,10 +1,13 @@
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 export default function useNavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [providers, setProviders] = useState(null);
+
+  const { data: session } = useSession();
 
   const pathname = usePathname();
 
@@ -22,12 +25,23 @@ export default function useNavigationBar() {
     setIsProfileMenuOpen((isOpen) => !isOpen);
   }
 
+  useEffect(() => {
+    async function setAuthProviders() {
+      const response = await getProviders();
+
+      setProviders(response);
+    }
+    setAuthProviders();
+  }, []);
+
   return {
     isMobileMenuOpen,
     toggleMobileMenu,
     isProfileMenuOpen,
     toggleProfileMenu,
     pathname,
-    isLoggedIn,
+    session,
+    providers,
+    signIn,
   };
 }
