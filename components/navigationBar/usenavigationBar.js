@@ -54,5 +54,6 @@ export default function useNavigationBar() {
     profileImage,
     signIn,
     signOutUser,
+    setIsProfileMenuOpen,
   };
 }

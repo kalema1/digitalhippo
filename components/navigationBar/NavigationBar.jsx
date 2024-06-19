@@ -17,6 +17,7 @@ export default function NavigationBar() {
     profileImage,
     signIn,
     signOutUser,
+    setIsProfileMenuOpen,
   } = useNavigationBar();
 
   return (
@@ -183,6 +184,7 @@ export default function NavigationBar() {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
+                      onClick={() => setIsProfileMenuOpen(false)}
                     >
                       your Profile
                     </Link>
@@ -192,6 +194,7 @@ export default function NavigationBar() {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-1"
+                      onClick={() => setIsProfileMenuOpen(false)}
                     >
                       Saved properties
                     </Link>
