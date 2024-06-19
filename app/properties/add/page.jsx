@@ -1,3 +1,5 @@
-export default function AddProperty() {
-  return <div>properties/add</div>;
+import AddProperty from "@/components/property/AddProperty";
+
+export default function PropertyAddPage() {
+  return <AddProperty />;
 }
