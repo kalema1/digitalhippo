@@ -26,6 +26,14 @@ export default function useNavigationBar() {
     setIsProfileMenuOpen((isOpen) => !isOpen);
   }
 
+  /*
+   * sign out user
+   */
+  function signOutUser() {
+    setIsProfileMenuOpen(false);
+    signOut();
+  }
+
   useEffect(() => {
     async function setAuthProviders() {
       const response = await getProviders();
@@ -45,5 +53,6 @@ export default function useNavigationBar() {
     providers,
     profileImage,
     signIn,
+    signOutUser,
   };
 }

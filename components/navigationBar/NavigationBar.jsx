@@ -16,6 +16,7 @@ export default function NavigationBar() {
     providers,
     profileImage,
     signIn,
+    signOutUser,
   } = useNavigationBar();
 
   return (
@@ -195,6 +196,7 @@ export default function NavigationBar() {
                       Saved properties
                     </Link>
                     <button
+                      onClick={signOutUser}
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex="-1"
