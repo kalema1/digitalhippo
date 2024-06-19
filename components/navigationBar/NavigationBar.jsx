@@ -14,6 +14,7 @@ export default function NavigationBar() {
     pathname,
     session,
     providers,
+    profileImage,
     signIn,
   } = useNavigationBar();
 
@@ -158,7 +159,7 @@ export default function NavigationBar() {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       className="h-8 w-8 rounded-full"
-                      src="/images/profile.png"
+                      src={profileImage || `/images/profile.png`}
                       alt="profile"
                       width={30}
                       height={30}

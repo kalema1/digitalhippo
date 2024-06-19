@@ -8,6 +8,7 @@ export default function useNavigationBar() {
   const [providers, setProviders] = useState(null);
 
   const { data: session } = useSession();
+  const profileImage = session?.user?.image;
 
   const pathname = usePathname();
 
@@ -42,6 +43,7 @@ export default function useNavigationBar() {
     pathname,
     session,
     providers,
+    profileImage,
     signIn,
   };
 }
