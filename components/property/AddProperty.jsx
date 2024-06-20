@@ -53,7 +53,31 @@ export default function AddProperty() {
     }));
   }
 
-  function handleAmenitiesChange() {}
+  function handleAmenitiesChange(event) {
+    const { value, checked } = event.target;
+
+    //clone the current array
+    const updatedAmenities = [...fields.amenities];
+
+    //check if the field is checked
+    if (checked) {
+      //add value to the array
+      updatedAmenities.push(value);
+    } else {
+      //remove the value from array
+      const index = updatedAmenities.indexOf(value);
+
+      if (index !== -1) {
+        updatedAmenities.splice(index, 1);
+      }
+    }
+
+    //update state with udated array
+    setFields((previousFields) => ({
+      ...previousFields,
+      amenities: updatedAmenities,
+    }));
+  }
 
   function handleImageChange() {}
 
