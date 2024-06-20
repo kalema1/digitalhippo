@@ -79,7 +79,23 @@ export default function AddProperty() {
     }));
   }
 
-  function handleImageChange() {}
+  function handleImageChange(event) {
+    const { files } = event.target;
+
+    //clone the images array
+    const updatedImages = [fields.images];
+
+    //add new files to the array
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    //pudate state with array of images
+    setFields((previousFields) => ({
+      ...previousFields,
+      images: updatedImages,
+    }));
+  }
 
   return (
     <section className="bg-blue-50">
