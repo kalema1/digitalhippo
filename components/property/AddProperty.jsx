@@ -101,7 +101,11 @@ export default function AddProperty() {
     <section className="bg-blue-50">
       <div className="container m-auto max-w-2xl py-24">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-          <form>
+          <form
+            action="/api/properties"
+            method="POST"
+            encType="multipart/form-data"
+          >
             <h2 className="text-3xl text-center font-semibold mb-6">
               Add Property
             </h2>
@@ -514,7 +518,7 @@ export default function AddProperty() {
               <input
                 type="text"
                 id="seller_name"
-                name="seller_info.name."
+                name="seller_info.name"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Name"
                 value={fields.seller_info.name}
@@ -571,6 +575,7 @@ export default function AddProperty() {
                 className="border rounded w-full py-2 px-3"
                 accept="image/*"
                 multiple
+                required
                 onChange={handleImageChange}
               />
             </div>
