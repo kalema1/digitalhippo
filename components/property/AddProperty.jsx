@@ -44,13 +44,12 @@ export default function AddProperty() {
           [innerKey]: value,
         },
       }));
-      return;
+    } else {
+      setFields((previousfields) => ({
+        ...previousfields,
+        [name]: value,
+      }));
     }
-
-    setFields((previousfields) => ({
-      ...previousfields,
-      [name]: value,
-    }));
   }
 
   function handleAmenitiesChange(event) {

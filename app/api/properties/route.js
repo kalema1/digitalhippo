@@ -1,5 +1,6 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
+import { getSessionUser } from "@/services/getSessionUser";
 
 /*
  * gets /api/properties
@@ -27,6 +28,16 @@ export async function GET(request) {
  */
 export async function POST(request) {
   try {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response("User ID is required", { status: 401 });
+    }
+
+    const { userId } = sessionUser;
+
     const formData = await request.formData();
 
     //access all values from amenities and images
@@ -60,12 +71,16 @@ export async function POST(request) {
         email: formData.get("seller_info.email"),
         phone: formData.get("seller_info.phone"),
       },
-      images,
+      owner: userId,
+      //images,
     };
 
-    console.log(propertyData);
+    const newProperty = new Property(propertyData);
+    await newProperty.save();
 
-    return new Response(JSON.stringify(), { status: 200 });
+    return Response.redirect(
+      `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
+    );
   } catch (error) {
     return new Response("Failed to add Property", { status: 500 });
   }
