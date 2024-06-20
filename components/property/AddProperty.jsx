@@ -30,7 +30,28 @@ export default function AddProperty() {
     images: [],
   });
 
-  function handleChange() {}
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    // check if nested property
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+
+      setFields((previousFields) => ({
+        ...previousFields,
+        [outerKey]: {
+          ...previousFields[outerKey],
+          [innerKey]: value,
+        },
+      }));
+      return;
+    }
+
+    setFields((previousfields) => ({
+      ...previousfields,
+      [name]: value,
+    }));
+  }
 
   function handleAmenitiesChange() {}
 
