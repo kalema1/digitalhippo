@@ -7,6 +7,7 @@ import PropertyImageHeader from "@/components/propertyImageHeader/PropertyImageH
 import Loader from "@/ui/Loader";
 import BackButton from "@/ui/BackButton";
 import PropertyInfo from "@/components/property/PropertyInfo";
+import PropertyImages from "@/components/property/PropertyImages";
 
 export default function PropertyDetails() {
   const { propertyId } = useParams();
@@ -52,6 +53,7 @@ export default function PropertyDetails() {
           <PropertyImageHeader image={property.images[0]} />
           <BackButton />
           <PropertyInfo property={property} />
+          <PropertyImages images={property.images} />
         </>
       )}
     </>
