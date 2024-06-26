@@ -39,8 +39,34 @@ export function useProfile() {
   /*
    * deletes property
    */
-  function handleDeleteProperty(propertyId) {
-    console.log(propertyId);
+  async function handleDeleteProperty(propertyId) {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this Property"
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/properties/${propertyId}`, {
+        method: "DELETE",
+      });
+
+      if (response.status === 200) {
+        //remove property from state/screen
+        const updatedProperties = properties.filter(
+          (property) => property._id !== propertyId
+        );
+
+        setProperties(updatedProperties);
+
+        alert("Property SuccessFully Deleted");
+      } else {
+        alert("Failed to Delete Property");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return {
