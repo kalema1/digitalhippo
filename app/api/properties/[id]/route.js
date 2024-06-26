@@ -78,7 +78,7 @@ export async function PUT(request, { params }) {
   try {
     await connectDB();
 
-    const propertyId = params.id;
+    const propertId = params.id;
 
     const sessionUser = await getSessionUser();
 
@@ -93,8 +93,8 @@ export async function PUT(request, { params }) {
     //access all values from amenities
     const amenities = formData.getAll("amenities");
 
-    // get proerty t update
-    const existingProperty = await Property.findById(propertyId);
+    // get proerty to update
+    const existingProperty = await Property.findById(propertId);
 
     if (!existingProperty) {
       return new Response("Property does not exist", { status: 404 });
@@ -135,7 +135,7 @@ export async function PUT(request, { params }) {
 
     // update property in database
     const updatedProperty = await Property.findByIdAndUpdate(
-      propertyId,
+      propertId,
       propertyData
     );
 

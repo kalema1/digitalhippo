@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useParams, useRouter } from "next/navigation";
 import { fetchProperty } from "@/services/apiProperties";
 
 export function usePropertyEditForm() {
   const { propertyId } = useParams();
-  const router = useRouter;
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [fields, setFields] = useState({
     type: "",
@@ -109,10 +110,39 @@ export function usePropertyEditForm() {
     }));
   }
 
+  /*
+   * handle the update of property data on form submission
+   */
+  async function handleUpdateProperty(event) {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+
+      const response = await fetch(`/api/properties/${propertyId}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (response.status === 200) {
+        router.push(`/properties/${propertyId}`);
+        toast.success("Property Updated Successfully");
+      }
+
+      if (response.status === 401 || response.status === 403) {
+        toast.error("Permision Denied");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error has occurred");
+    }
+  }
+
   return {
     handleAmenitiesChange,
     handleChange,
     fields,
     isLoading,
+    handleUpdateProperty,
   };
 }
