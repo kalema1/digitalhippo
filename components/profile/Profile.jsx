@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useProfile } from "./useProfile";
 
 export default function Profile() {
+  const { profileImage, ProfileEmail, ProfileName } = useProfile();
+
   return (
     <section className="bg-blue-50">
       <div className="container m-auto py-24">
@@ -14,18 +17,18 @@ export default function Profile() {
               <div className="mb-4">
                 <Image
                   className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
-                  src="/images/profile.png"
+                  src={profileImage || `/images/profile.png`}
                   alt="User"
-                  width={1800}
+                  width={300}
                   height={0}
                   priority={true}
                 />
               </div>
               <h2 className="text-2xl mb-4">
-                <span className="font-bold block">Name: </span> John Doe
+                <span className="font-bold block">Name: </span> {ProfileName}
               </h2>
               <h2 className="text-2xl">
-                <span className="font-bold block">Email: </span> john@gmail.com
+                <span className="font-bold block">Email: </span> {ProfileEmail}
               </h2>
             </div>
 
