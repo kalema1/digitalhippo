@@ -32,10 +32,10 @@ export default function Profile() {
                   priority={true}
                 />
               </div>
-              <h2 className="text-2xl mb-4">
+              <h2 className=" text-xs sm:text-xl mb-4">
                 <span className="font-bold block">Name: </span> {ProfileName}
               </h2>
-              <h2 className="text-2xl">
+              <h2 className=" text-xs sm:text-xl">
                 <span className="font-bold block">Email: </span> {ProfileEmail}
               </h2>
             </div>
