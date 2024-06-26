@@ -3,8 +3,7 @@
 import { usePropertyEditForm } from "./usePropertyEditForm";
 
 export default function PropertyEditForm() {
-  const { handleAmenitiesChange, handleChange, handleImageChange, fields } =
-    usePropertyEditForm();
+  const { handleAmenitiesChange, handleChange, fields } = usePropertyEditForm();
   return (
     <section className="bg-blue-50">
       <div className="container m-auto max-w-2xl py-24">
@@ -462,25 +461,6 @@ export default function PropertyEditForm() {
                 placeholder="Phone"
                 value={fields.seller_info.phone}
                 onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="images"
-                className="block text-gray-700 font-bold mb-2"
-              >
-                Images (Select up to 4 images)
-              </label>
-              <input
-                type="file"
-                id="images"
-                name="images"
-                className="border rounded w-full py-2 px-3"
-                accept="image/*"
-                multiple
-                required
-                onChange={handleImageChange}
               />
             </div>
 
