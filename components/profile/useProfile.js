@@ -11,7 +11,7 @@ export function useProfile() {
   const ProfileEmail = session?.user?.email;
   const ProfileName = session?.user?.name;
 
-  useProfile(() => {
+  useEffect(() => {
     const fetchUserProperties = async (userId) => {
       if (!userId) {
         return;
@@ -36,5 +36,17 @@ export function useProfile() {
     }
   }, [session]);
 
-  return { profileImage, ProfileEmail, ProfileName, isLoading, properties };
+  /*
+   * deletes property
+   */
+  function handleDeleteProperty(propertyId) {}
+
+  return {
+    profileImage,
+    ProfileEmail,
+    ProfileName,
+    isLoading,
+    properties,
+    handleDeleteProperty,
+  };
 }
