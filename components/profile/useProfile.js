@@ -39,7 +39,9 @@ export function useProfile() {
   /*
    * deletes property
    */
-  function handleDeleteProperty(propertyId) {}
+  function handleDeleteProperty(propertyId) {
+    console.log(propertyId);
+  }
 
   return {
     profileImage,
