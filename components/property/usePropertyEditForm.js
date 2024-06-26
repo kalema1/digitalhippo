@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { fetchProperty } from "@/services/apiProperties";
 
 export function usePropertyEditForm() {
+  const { propertyId } = useParams();
+  const router = useRouter;
+  const [isLoading, setIsLoading] = useState(true);
   const [fields, setFields] = useState({
     type: "",
     name: "",
@@ -26,6 +31,35 @@ export function usePropertyEditForm() {
       phone: "",
     },
   });
+
+  useEffect(() => {
+    // fetch property data for the form
+    const fetchPropertyData = async () => {
+      try {
+        const propertyData = await fetchProperty(propertyId);
+
+        // check rates fields for null then make them empty strings
+        if (propertyData && propertyData.rates) {
+          const defaultRates = { ...propertyData.rates };
+
+          for (const rate in defaultRates) {
+            if (defaultRates[rate] == null) {
+              defaultRates[rate] = "";
+            }
+          }
+
+          propertyData.rates = defaultRates;
+        }
+
+        setFields(propertyData);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPropertyData();
+  }, [propertyId]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -79,5 +113,6 @@ export function usePropertyEditForm() {
     handleAmenitiesChange,
     handleChange,
     fields,
+    isLoading,
   };
 }

@@ -1,9 +1,16 @@
 "use client";
 
+import Loader from "@/ui/Loader";
 import { usePropertyEditForm } from "./usePropertyEditForm";
 
 export default function PropertyEditForm() {
-  const { handleAmenitiesChange, handleChange, fields } = usePropertyEditForm();
+  const { handleAmenitiesChange, handleChange, fields, isLoading } =
+    usePropertyEditForm();
+
+  if (isLoading) {
+    return <Loader loading={isLoading} />;
+  }
+
   return (
     <section className="bg-blue-50">
       <div className="container m-auto max-w-2xl py-24">
