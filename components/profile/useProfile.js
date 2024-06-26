@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export function useProfile() {
   const [properties, setProperties] = useState([]);
@@ -60,9 +61,9 @@ export function useProfile() {
 
         setProperties(updatedProperties);
 
-        alert("Property SuccessFully Deleted");
+        toast.success("Property SuccessFully Deleted");
       } else {
-        alert("Failed to Delete Property");
+        toast.error("Failed to Delete Property");
       }
     } catch (error) {
       console.log(error);
