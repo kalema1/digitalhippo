@@ -1,3 +1,5 @@
+import SavedProperties from "@/components/property/SavedProperties";
+
 export default function SavedPropertiesPage() {
-  return <div>save properties</div>;
+  return <SavedProperties />;
 }
