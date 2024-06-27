@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request) {
   try {
     await connectDB();
-    const { propertyId } = request.json();
+    const { propertyId } = await request.json();
 
     const sessionUser = await getSessionUser();
 
