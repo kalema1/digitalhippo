@@ -10,7 +10,7 @@ export async function POST(request) {
     await connectDB();
     const { propertyId } = request.json();
 
-    const sessionUser = getSessionUser();
+    const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.userId) {
       return new Response("User ID is required", { status: 401 });
@@ -19,7 +19,6 @@ export async function POST(request) {
     const { userId } = sessionUser;
 
     // find user in database
-
     const user = await User.findOne({ _id: userId });
 
     // check if property is bookmarked
