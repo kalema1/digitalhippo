@@ -15,12 +15,13 @@ export default function PropertyContactForm({ property }) {
     SetPhone,
     SetMessage,
     SetWasSubmitted,
-  } = usePropertyContantForm();
+    handleSubmit,
+  } = usePropertyContantForm(property);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
