@@ -1,6 +1,22 @@
+"use client";
+
 import { FaPaperPlane } from "react-icons/fa";
+import { usePropertyContantForm } from "./usePropertyContactForm";
 
 export default function PropertyContactForm({ property }) {
+  const {
+    name,
+    email,
+    message,
+    phone,
+    wasSubmitted,
+    SetName,
+    SetEmail,
+    SetPhone,
+    SetMessage,
+    SetWasSubmitted,
+  } = usePropertyContantForm();
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
@@ -18,6 +34,8 @@ export default function PropertyContactForm({ property }) {
             type="text"
             placeholder="Enter your name"
             required
+            value={name}
+            onChange={(event) => SetName(event.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -33,6 +51,8 @@ export default function PropertyContactForm({ property }) {
             type="email"
             placeholder="Enter your email"
             required
+            value={email}
+            onChange={(event) => SetEmail(event.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -47,6 +67,8 @@ export default function PropertyContactForm({ property }) {
             id="phone"
             type="text"
             placeholder="Enter your phone number"
+            value={phone}
+            onChange={(event) => SetPhone(event.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -60,6 +82,8 @@ export default function PropertyContactForm({ property }) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline"
             id="message"
             placeholder="Enter your message"
+            value={message}
+            onChange={(event) => SetMessage(event.target.value)}
           ></textarea>
         </div>
         <div>
