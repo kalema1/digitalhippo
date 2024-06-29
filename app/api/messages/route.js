@@ -10,12 +10,16 @@ export async function POST(request) {
   try {
     await connectDB();
 
-    const { name, email, phone, message, recipient, property } = request.json();
+    const { name, email, phone, message, recipient, property } =
+      await request.json();
 
     const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.userId) {
-      return new Response("User ID is required", { status: 401 });
+      return new Response(
+        JSON.stringify({ message: "You must be logged in to send a message" }),
+        { status: 401 }
+      );
     }
 
     const { user } = sessionUser;
@@ -23,7 +27,9 @@ export async function POST(request) {
     // can not send message to self
     if (user.id === recipient) {
       return new Response(
-        JSON.stringify({ message: "can not send to a message to yourself" }),
+        JSON.stringify({
+          message: "You can not send to a message to yourself",
+        }),
         {
           status: 400,
         }
