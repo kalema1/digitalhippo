@@ -27,13 +27,10 @@ export function usePropertyContantForm(property) {
         body: JSON.stringify(data),
       });
 
-      if (response.status === 400) {
-        toast.error("You can not send to a message to yourself");
-        return;
-      }
-
-      if (response.status === 401) {
-        toast.error("You must be logged in to send a message");
+      if (response.status === 400 || response.status === 401) {
+        // get epi data object
+        const dataObject = await response.json();
+        toast.error(dataObject.message);
         return;
       }
 
