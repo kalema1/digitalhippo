@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function Message() {
+export default function Message({ message }) {
   return (
     <div className="space-y-4">
       <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
