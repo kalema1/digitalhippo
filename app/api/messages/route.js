@@ -5,6 +5,34 @@ import { getSessionUser } from "@/services/getSessionUser";
 
 export const dynamic = "force-dynamic";
 
+//GET: /api/messeages
+export async function GET() {
+  try {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response(JSON.stringify("User ID is required"), {
+        status: 401,
+      });
+    }
+
+    const { userId } = sessionUser;
+
+    const messages = await Message.find({ recipient: userId })
+      .populate("sender", "name")
+      .populate("property", "title");
+
+    return new Response(JSON.stringify(messages), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response(SOMETHING_WENT_WRONG, {
+      status: 500,
+    });
+  }
+}
+
 //POST: /api/messages
 export async function POST(request) {
   try {
