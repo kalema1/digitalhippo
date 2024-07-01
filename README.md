@@ -12,7 +12,7 @@ This is a Next.js application, that uses MongoDB database.The application uses t
 - Mongoose
 - Next Auth
 - Cloudinary
-- react-toastisfy
+- react-toastify
 - react-share
 - react-spinner
 - react-icons
