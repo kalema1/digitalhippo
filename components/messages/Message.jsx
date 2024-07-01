@@ -34,12 +34,6 @@ export default function Message({ message }) {
             {new Date(message.createdAt).toLocaleString()}
           </li>
         </ul>
-        <button className="mt-4 mr-3 bg-blue-500 text-white py-1 px-3 rounded-md">
-          Mark As Read
-        </button>
-        <button className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md">
-          Delete
-        </button>
       </div>
     </div>
   );
