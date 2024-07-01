@@ -8,12 +8,12 @@ https://property-pulse-brown.vercel.app/
 
 This is a Next.js application, that uses MongoDB database.The application uses the following technologies and libriries;
 
-. MongoDB
-. Mongoose
-. Next Auth
-. Cloudinary
-. react-toastisfy
-. react-share
-. react-spinner
-. react-icons
-. Tailwind css
+- MongoDB
+- Mongoose
+- Next Auth
+- Cloudinary
+- react-toastisfy
+- react-share
+- react-spinner
+- react-icons
+- Tailwind css
