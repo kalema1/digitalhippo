@@ -5,7 +5,7 @@ export function usePropertySearchForm() {
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("All");
 
-  const inputElement = useRef(nul);
+  const inputElement = useRef(null);
 
   const router = useRouter();
 
