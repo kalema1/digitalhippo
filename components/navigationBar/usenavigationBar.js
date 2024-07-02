@@ -27,6 +27,13 @@ export default function useNavigationBar() {
   }
 
   /*
+   * closes the profile menu
+   */
+  function closeProfileMenu() {
+    setIsProfileMenuOpen(false);
+  }
+
+  /*
    * sign out user
    */
   function signOutUser() {
@@ -55,5 +62,6 @@ export default function useNavigationBar() {
     signIn,
     signOutUser,
     setIsProfileMenuOpen,
+    closeProfileMenu,
   };
 }

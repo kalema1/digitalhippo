@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGoogle, FaComment } from "react-icons/fa";
 import useNavigationBar from "./usenavigationBar";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 export default function NavigationBar() {
   const {
@@ -18,7 +19,10 @@ export default function NavigationBar() {
     signIn,
     signOutUser,
     setIsProfileMenuOpen,
+    closeProfileMenu,
   } = useNavigationBar();
+
+  const ref = useOutsideClick(closeProfileMenu, false);
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
@@ -177,6 +181,7 @@ export default function NavigationBar() {
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
+                    ref={ref}
                   >
                     <Link
                       href="/profile"
