@@ -224,6 +224,7 @@ export default function NavigationBar() {
               className={`${
                 pathname === "/" ? "bg-black" : ""
               } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
+              onClick={toggleMobileMenu}
             >
               Home
             </Link>
@@ -232,6 +233,7 @@ export default function NavigationBar() {
               className={`${
                 pathname === "/properties" ? "bg-black" : ""
               } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
+              onClick={toggleMobileMenu}
             >
               Properties
             </Link>
@@ -241,6 +243,7 @@ export default function NavigationBar() {
                 className={`${
                   pathname === "/properties/add" ? "bg-black" : ""
                 } hover:bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium`}
+                onClick={toggleMobileMenu}
               >
                 Add Property
               </Link>
