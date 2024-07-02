@@ -217,7 +217,10 @@ export default function NavigationBar() {
 
       {/* mobile menu */}
       {isMobileMenuOpen && (
-        <div className="" id="mobile-menu">
+        <div
+          className="h-screen w-full bg-blue-700 absolute top-15 z-10"
+          id="mobile-menu"
+        >
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
               href="/"
