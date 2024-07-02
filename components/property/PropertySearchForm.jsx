@@ -3,8 +3,14 @@
 import { usePropertySearchForm } from "./usePropertySearchForm";
 
 export default function PropertySearchForm() {
-  const { location, propertyType, setLocation, setPropertyType, handleSubmit } =
-    usePropertySearchForm();
+  const {
+    location,
+    propertyType,
+    setLocation,
+    setPropertyType,
+    handleSubmit,
+    inputElement,
+  } = usePropertySearchForm();
 
   return (
     <form
@@ -22,6 +28,7 @@ export default function PropertySearchForm() {
           className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
+          ref={inputElement}
         />
       </div>
       <div className="w-full md:w-2/5 md:pl-2">

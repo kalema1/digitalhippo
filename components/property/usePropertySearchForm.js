@@ -1,11 +1,17 @@
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function usePropertySearchForm() {
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("All");
 
+  const inputElement = useRef(nul);
+
   const router = useRouter();
+
+  useEffect(() => {
+    inputElement.current.focus();
+  });
 
   /*
    * handles the form submission
@@ -30,5 +36,6 @@ export function usePropertySearchForm() {
     setLocation,
     setPropertyType,
     handleSubmit,
+    inputElement,
   };
 }
