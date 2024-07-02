@@ -11,7 +11,7 @@ export function usePropertySearchForm() {
 
   useEffect(() => {
     inputElement.current.focus();
-  });
+  }, []);
 
   /*
    * handles the form submission
