@@ -28,6 +28,8 @@ export function usePropertySearchForm() {
     const query = `?location=${location}&propertyType=${propertyType}`;
 
     router.push(`/properties/search-results${query}`);
+
+    setLocation("");
   }
 
   return {
